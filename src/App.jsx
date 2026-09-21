@@ -1,5 +1,5 @@
 const Header = (props) => {
-  return <h1>{props.course}</h1>
+  return <h1>{props.course.name}</h1>
 }
 
 const Part = (props) => {
@@ -10,9 +10,9 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part name={props.parts[0].name} exercises={props.parts[0].exercises} />
-      <Part name={props.parts[1].name} exercises={props.parts[1].exercises} />
-      <Part name={props.parts[2].name} exercises={props.parts[2].exercises} />
+      <Part name={props.course.parts[0].name} exercises={props.course.parts[0].exercises} />
+      <Part name={props.course.parts[1].name} exercises={props.course.parts[1].exercises} />
+      <Part name={props.course.parts[2].name} exercises={props.course.parts[2].exercises} />
     </div>
   )
 }
@@ -20,7 +20,7 @@ const Content = (props) => {
 const Total = (props) => {
   return (
   <p>
-    Total units: {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}
+    Total units: {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}
   </p>
   )
 }
@@ -34,9 +34,9 @@ const Footer = (props) => {
 }
 
 const App = () => {
-  const course = 'CSIT340 - Industry Elective'
-
-  const parts = [
+  const course = {
+    name:'CSIT340 - Industry Elective',
+    parts: [
     {
       name: 'CSIT340 Web Development',
       exercises: 3
@@ -50,7 +50,7 @@ const App = () => {
       exercises: 3
     }
   ]
-
+  }
   const studentName = 'Terence Emmanuel De Vera'
   const courseCode = 'CSIT340'
   const section = 'G5'
@@ -59,11 +59,11 @@ const App = () => {
     <div>
       <p></p>
 
-      <p> Exercise 1.4 : course information step 4</p>
+      <p> Exercise 1.5 : course information step 5</p>
      
       <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Content course={course} />
+      <Total course={course} />
       <Footer name={studentName} code={courseCode} section={section} />
     </div>
   )
