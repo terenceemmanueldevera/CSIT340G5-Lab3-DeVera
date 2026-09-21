@@ -10,15 +10,19 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part name={props.part1.name} exercises={props.part1.exercises} />
-      <Part name={props.part2.name} exercises={props.part2.exercises} />
-      <Part name={props.part3.name} exercises={props.part3.exercises} />
+      <Part name={props.parts[0].name} exercises={props.parts[0].exercises} />
+      <Part name={props.parts[1].name} exercises={props.parts[1].exercises} />
+      <Part name={props.parts[2].name} exercises={props.parts[2].exercises} />
     </div>
   )
 }
 
 const Total = (props) => {
-  return <p>Total units: {props.total}</p>
+  return (
+  <p>
+    Total units: {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}
+  </p>
+  )
 }
 
 const Footer = (props) => {
@@ -32,21 +36,20 @@ const Footer = (props) => {
 const App = () => {
   const course = 'CSIT340 - Industry Elective'
 
-  const part1 = {
-    name : 'CSIT340 Web Development',
-    exercises : 3
-  }
-  
-  const part2 = {
-    name : 'CSIT321 App Development',
-    exercises : 3
-  }
-
-  const part3 = {
-    name : 'CSIT327 Information Management',
-    exercises : 3
-  }
-
+  const parts = [
+    {
+      name: 'CSIT340 Web Development',
+      exercises: 3
+    },
+    {
+      name: 'CSIT321 App Development',
+      exercises: 3
+    },
+    {
+      name: 'CSIT327 Information Management',
+      exercises: 3
+    }
+  ]
 
   const studentName = 'Terence Emmanuel De Vera'
   const courseCode = 'CSIT340'
@@ -56,11 +59,11 @@ const App = () => {
     <div>
       <p></p>
 
-      <p> Exercise 1.3 : course information step 3</p>
+      <p> Exercise 1.4 : course information step 4</p>
      
       <Header course={course} />
-      <Content part1={part1} part2={part2} part3={part3} />
-      <Total total={part1.exercises + part2.exercises + part3.exercises} />
+      <Content parts={parts} />
+      <Total parts={parts} />
       <Footer name={studentName} code={courseCode} section={section} />
     </div>
   )
